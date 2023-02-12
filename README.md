@@ -1,40 +1,50 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+# [Asp.Net Core - Back-End](https://demo-two-psi.vercel.app/dashboard) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) 
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+### Reto Tecnico - FullStack - TEvolvers [(Demo)](https://demo-two-psi.vercel.app/dashboard) 
 
-> Free React Admin Dashboard made with Material-UI components and React.
+## Stack Tecnologico
 
-![preview](public/assets/preview.jpg)
+Principales tecnologias para el proyecto users:
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **6** Demo pages                                      | **50+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ Next.js version                                                 |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+* **C#** 
+* **Asp.Net Core Web Api** 
+* **SQL Server**
+* **Docker** 
 
-## Page demo
+## Arquitectura
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+### Diagrama de arquitectura de la solución (Basada en la nube de Azure). 
 
-## Getting started
+![Arquitectura](https://user-images.githubusercontent.com/42001590/206023489-32c65f64-d02a-48fe-b0ad-76502b3d6b56.png)
 
-- Recommended `node js 16.x` and `npm 6+`. (suggestion v16.15.0)
-- Install dependencies: `npm install` / `yarn install`
-- Start the project: `npm run start` / `yarn start`
+# Diagrama de Clases
 
-## License
+![Captura de pantalla (982)](https://user-images.githubusercontent.com/42001590/216451131-1b189b36-0d8b-45be-9a96-47c4431a86ee.png)
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+## Patron de Diseño
 
-## Contact us
+### Repository
+El patrón de diseño de repositorio es uno de los más populares para crear una aplicación de nivel empresarial. Tiene como restricción que se trabaja directamente con los datos de la aplicación y crea nuevas capas para las operaciones de la base de datos, la lógica de negocio, y la interfaz de usuario de la aplicación.
 
-Email Us: support@minimals.cc
+Ventajas del patrón de repositorio:
+
+*    El código de acceso a los datos puede ser reutilizado.
+*    Es fácil de implementar la lógica del dominio.
+*    Nos ayuda a desacoplar la lógica de la aplicación.
+*    La lógica de negocio puede ser probada fácilmente sin acceso a los datos.
+*    Es una buena manera de implementar la inyección de dependencia que hace que el código sea más fácil de probar
+
+## Paso a Paso para levantamiento Del Componente
+
+* **Etapa1:** Análisis de documentación, requerimientos y logica del proyecto.
+* **Etapa2:** Creacion del proyecto y instalacion de las diferentes librerias y dependencias, configuracion del proyecto.
+* **Etapa3:** Creacion y configuracion de Base de Datos, Modelos, Migraciones, Interfaces, Repositorios, Controladores y demás componentes.
+* **Etapa4:** Pruebas Unitarias
+* **Etapa5:** Configuracion Docker
+* **Etapa6:** Integracion con el Front-End
+* **Etapa7:** Despliegue del proyecto.
+
+# Demo
+
+![Captura de pantalla (985)](https://user-images.githubusercontent.com/42001590/216730710-6efac03e-4afc-42cf-bf38-479752e27276.png)
+
