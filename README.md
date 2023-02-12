@@ -26,11 +26,11 @@ Principales tecnologias para el proyecto CompanyTory:
 
 ![Diagrama ER de base de datos (pata de gallo)(1)](https://user-images.githubusercontent.com/42001590/218332414-34d6faa8-c32b-4d2c-b43d-8ee6eb9e0ed4.png)
 
-## Patron de Diseño
+## Patrón de arquitectura de datos 
 
-### Observer 
+### Redux 
 
-Observador es un patrón de diseño de software que define una dependencia del tipo uno a muchos entre objetos, de manera que cuando uno de los objetos cambia su estado, notifica este cambio a todos los dependientes. Se trata de un patrón de comportamiento (existen de tres tipos: creación, estructurales y de comportamiento), por lo que está relacionado con algoritmos de funcionamiento y asignación de responsabilidades a clases y objetos. 
+Redux es un patrón de arquitectura de datos que concede manipular el estado de la aplicación de una forma predecible. Está creado para disminuir el número de relaciones entre los componentes de la aplicación y conservar un flujo de datos asequible.
 
 ## Paso a Paso para levantamiento Del Componente
 
