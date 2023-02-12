@@ -11,6 +11,10 @@ Principales tecnologias para el proyecto CompanyTory:
 * **Redux Toolkit**
 * **Styled-Components**
 
+# Demo
+
+![Captura de pantalla (989)](https://user-images.githubusercontent.com/42001590/218299563-4523a72f-f7f4-4b5e-a609-778eb67baad8.png)
+
 
 ## Arquitectura
 
@@ -36,8 +40,3 @@ Observador es un patrón de diseño de software que define una dependencia del t
 * **Etapa4:** Pruebas Unitarias
 * **Etapa5:** Integracion con el Back-End
 * **Etapa6:** Despliegue del proyecto
-
-# Demo
-
-![Captura de pantalla (985)](https://user-images.githubusercontent.com/42001590/216730710-6efac03e-4afc-42cf-bf38-479752e27276.png)
-
