@@ -3,12 +3,14 @@
 
 ## Stack Tecnologico
 
-Principales tecnologias para el proyecto users:
+Principales tecnologias para el proyecto CompanyTory:
 
-* **Angular:** 
-* **Angular Material** 
-* **The RxJS library**
-* **SCSS** 
+* **React:** 
+* **Material-UI** 
+* **RTK Query**
+* **Redux Toolkit**
+* **Styled-Components**
+
 
 ## Arquitectura
 
