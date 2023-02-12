@@ -16,7 +16,7 @@ Principales tecnologias para el proyecto CompanyTory:
 
 ### Diagrama de arquitectura de la solución (Basada en la nube de Azure). 
 
-![Arquitectura](https://user-images.githubusercontent.com/42001590/206023489-32c65f64-d02a-48fe-b0ad-76502b3d6b56.png)
+![architectureaws](https://user-images.githubusercontent.com/42001590/218298332-e5ab04de-10ae-45ee-9b49-70a2715c27c1.png)
 
 # Diagrama de Clases
 
