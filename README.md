@@ -14,7 +14,7 @@ Principales tecnologias para el proyecto CompanyTory:
 
 ## Arquitectura
 
-### Diagrama de arquitectura de la solución (Basada en la nube de Azure). 
+### Diagrama de arquitectura de la solución (Basada en Amazon Web Services). 
 
 ![architectureaws](https://user-images.githubusercontent.com/42001590/218298332-e5ab04de-10ae-45ee-9b49-70a2715c27c1.png)
 
