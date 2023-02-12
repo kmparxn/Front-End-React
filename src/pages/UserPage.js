@@ -1,269 +1,149 @@
-import { Helmet } from 'react-helmet-async';
-import { filter } from 'lodash';
-import { sentenceCase } from 'change-case';
-import { useState } from 'react';
-// @mui
-import {
-  Card,
-  Table,
-  Stack,
-  Paper,
-  Avatar,
-  Button,
-  Popover,
-  Checkbox,
-  TableRow,
-  MenuItem,
-  TableBody,
-  TableCell,
-  Container,
-  Typography,
-  IconButton,
-  TableContainer,
-  TablePagination,
-} from '@mui/material';
-// components
-import Label from '../components/label';
-import Iconify from '../components/iconify';
-import Scrollbar from '../components/scrollbar';
-// sections
-import { UserListHead, UserListToolbar } from '../sections/@dashboard/user';
-// mock
-import USERLIST from '../_mock/user';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import TablePagination from '@mui/material/TablePagination';
+import MenuItem from '@mui/material/MenuItem';
+import Popover from '@mui/material/Popover';
+import Iconify from 'src/components/iconify/Iconify';
+import Stack from '@mui/material/Stack';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import DialogUser from 'src/components/dialog/DialogUser';
+import { spacing } from '@mui/system';
+import DialogInventory from 'src/components/dialog/DialogInventory';
+import DialogEmail from 'src/components/dialog/DialogEmail';
+import { DownloadPdf } from 'src/utils/DownloadPdf';
 
-// ----------------------------------------------------------------------
-
-const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
-  { id: '' },
-];
-
-// ----------------------------------------------------------------------
-
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
+function createData(name, calories, fat, carbs, protein, price) {
+  return {
+    name,
+    calories,
+    fat,
+    carbs,
+    protein,
+    price,
+    history: [
+      {
+        date: '2020-01-05',
+        customerId: 'Laptop',
+        amount: 2,
+      },
+      {
+        date: '2020-01-02',
+        customerId: 'GTX 4500 TI',
+        amount: 3,
+      },
+    ],
+  };
 }
 
-function getComparator(order, orderBy) {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
+function Row(props) {
 
-function applySortFilter(array, comparator, query) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  if (query) {
-    return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
-  }
-  return stabilizedThis.map((el) => el[0]);
-}
+  const { row } = props;
+  const [ope, setOpe] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [opent, setOpent] = React.useState(false);
+  const [opente, setOpente] = React.useState(false);
+  const [opented, setOpented] = React.useState(false);
 
-export default function UserPage() {
-  const [open, setOpen] = useState(null);
+  const handleDialogPdf = () => {
+    DownloadPdf();
+  };
 
-  const [page, setPage] = useState(0);
+  const handleDialogEmail = () => {
+    setOpente(!opente);
+  };
 
-  const [order, setOrder] = useState('asc');
-
-  const [selected, setSelected] = useState([]);
-
-  const [orderBy, setOrderBy] = useState('name');
-
-  const [filterName, setFilterName] = useState('');
-
-  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleOpenMenu = (event) => {
-    setOpen(event.currentTarget);
+    setOpe(event.currentTarget);
   };
 
   const handleCloseMenu = () => {
-    setOpen(null);
+    setOpe(null);
   };
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
+  const handleDialogIvent = () => {
+    setOpent(!opent);
   };
-
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = USERLIST.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-    }
-    setSelected(newSelected);
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setPage(0);
-    setRowsPerPage(parseInt(event.target.value, 10));
-  };
-
-  const handleFilterByName = (event) => {
-    setPage(0);
-    setFilterName(event.target.value);
-  };
-
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - USERLIST.length) : 0;
-
-  const filteredUsers = applySortFilter(USERLIST, getComparator(order, orderBy), filterName);
-
-  const isNotFound = !filteredUsers.length && !!filterName;
 
   return (
-    <>
-      <Helmet>
-        <title> User | Minimal UI </title>
-      </Helmet>
-
-      <Container>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            User
-          </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New User
-          </Button>
-        </Stack>
-
-        <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
-
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <Table>
-                <UserListHead
-                  order={order}
-                  orderBy={orderBy}
-                  headLabel={TABLE_HEAD}
-                  rowCount={USERLIST.length}
-                  numSelected={selected.length}
-                  onRequestSort={handleRequestSort}
-                  onSelectAllClick={handleSelectAllClick}
-                />
+    <React.Fragment>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell>
+          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {row.name}
+        </TableCell>
+        <TableCell align="right">{row.calories}</TableCell>
+        <TableCell align="right">{row.fat}</TableCell>
+        <TableCell align="right">{row.carbs}</TableCell>
+        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">
+          <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
+            <Iconify icon={'eva:more-vertical-fill'} />
+          </IconButton>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+            <Stack spacing={2} direction="row">
+            <Typography variant="h6" gutterBottom component="div">
+                History 
+              </Typography> 
+              <Button  onClick={handleDialogIvent} sx={{ mt: 2  }} variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+              New Item
+              </Button> 
+            </Stack>
+            <DialogInventory opent={opent} handleDialogIvent={handleDialogIvent} /> 
+     
+              <Table size="small" aria-label="purchases" sx={{ mt: 1  }}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Date</TableCell>
+                    <TableCell>Item</TableCell>
+                    <TableCell align="right">Amount</TableCell>
+                    <TableCell align="right">Total price ($)</TableCell>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
-                  {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
-                    const selectedUser = selected.indexOf(name) !== -1;
-
-                    return (
-                      <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser}>
-                        <TableCell padding="checkbox">
-                          <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} />
-                        </TableCell>
-
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
-                            <Typography variant="subtitle2" noWrap>
-                              {name}
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        <TableCell align="left">{company}</TableCell>
-
-                        <TableCell align="left">{role}</TableCell>
-
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
-
-                        <TableCell align="left">
-                          <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
-                        </TableCell>
-
-                        <TableCell align="right">
-                          <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
-                            <Iconify icon={'eva:more-vertical-fill'} />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-
-                {isNotFound && (
-                  <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <Paper
-                          sx={{
-                            textAlign: 'center',
-                          }}
-                        >
-                          <Typography variant="h6" paragraph>
-                            Not found
-                          </Typography>
-
-                          <Typography variant="body2">
-                            No results found for &nbsp;
-                            <strong>&quot;{filterName}&quot;</strong>.
-                            <br /> Try checking for typos or using complete words.
-                          </Typography>
-                        </Paper>
+                  {row.history.map((historyRow) => (
+                    <TableRow key={historyRow.date}>
+                      <TableCell component="th" scope="row">
+                        {historyRow.date}
                       </TableCell>
+                      <TableCell>{historyRow.customerId}</TableCell>
+                      <TableCell align="right">{historyRow.amount}</TableCell>
+                      <TableCell align="right">{Math.round(historyRow.amount * row.price * 100) / 100}</TableCell>
+                      <TableCell align="right"><Iconify icon={'eva:trash-2-outline'} sx={{ mr:2, color: 'error.main' }} /></TableCell>
+                      <TableCell align=""><Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} /></TableCell>
                     </TableRow>
-                  </TableBody>
-                )}
+                  ))}
+                </TableBody>
               </Table>
-            </TableContainer>
-          </Scrollbar>
-
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={USERLIST.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Card>
-      </Container>
-
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
       <Popover
-        open={Boolean(open)}
-        anchorEl={open}
+        open={Boolean(ope)}
+        anchorEl={ope}
         onClose={handleCloseMenu}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -279,6 +159,16 @@ export default function UserPage() {
           },
         }}
       >
+        <MenuItem onClick={handleDialogEmail} >
+          <Iconify icon={'eva:share-fill'} sx={{ mr: 2 }} />
+          Share
+        </MenuItem>
+      
+        <MenuItem onClick={handleDialogPdf} >
+          <Iconify icon={'eva:checkmark-circle-2-fill'} sx={{ mr: 2 }} />
+          Download
+        </MenuItem>
+
         <MenuItem>
           <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Edit
@@ -289,6 +179,97 @@ export default function UserPage() {
           Delete
         </MenuItem>
       </Popover>
+      <DialogEmail opente={opente} handleDialogEmail={handleDialogEmail} /> 
+
+    </React.Fragment>
+  );
+}
+
+Row.propTypes = {
+  row: PropTypes.shape({
+    calories: PropTypes.number.isRequired,
+    carbs: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    history: PropTypes.arrayOf(
+      PropTypes.shape({
+        amount: PropTypes.number.isRequired,
+        customerId: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    protein: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+const rows = [
+  createData('TECH SAS', 'Calle 123', 12321313, '312-233-2343', 'Col', 3.99),
+  createData('MILICON SAS', 'Calle 123', 32321313, '412-233-2343', 'Col', 4.99),
+  createData('ECLAIR SAS', 'Calle 123', 92321313, '712-233-2343', 'Col', 3.79),
+  createData('CUPCAKE SAS', 'Calle 123', 42321313,'912-233-2343', 'Col', 2.5),
+  createData('TIGO SAS', 'Calle 123', 62321313, '212-233-2343', 'Col', 1.5),
+];
+
+export default function CollapsibleTable() {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [open, setOpen] = React.useState(false);
+
+  const handleDialog = () => {
+    setOpen(!open);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  return (
+    <>
+    <Container>
+    <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+          <Typography variant="h4" gutterBottom>
+          Hi, Welcome back
+          </Typography>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} onClick={handleDialog}>
+            New Company
+          </Button>
+          <DialogUser open={open} handleDialog={handleDialog} /> 
+        </Stack>
+    </Container>
+    
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Nombre de la Empresa</TableCell>
+              <TableCell align="right">Dirección</TableCell>
+              <TableCell align="right">NIT</TableCell>
+              <TableCell align="right">Telefono</TableCell>
+              <TableCell align="right">País</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <Row key={row.name} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   );
 }
