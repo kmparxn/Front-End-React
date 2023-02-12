@@ -32,11 +32,9 @@ Principales tecnologias para el proyecto CompanyTory:
 
 Redux es un patrón de arquitectura de datos que concede manipular el estado de la aplicación de una forma predecible. Está creado para disminuir el número de relaciones entre los componentes de la aplicación y conservar un flujo de datos asequible.
 
-## Paso a Paso para levantamiento Del Componente
+## Amazon Web Services
 
-* **Etapa1:** Análisis de documentación, requerimientos y logica del proyecto.
-* **Etapa2:** Creacion del proyecto y instalacion de las diferentes librerias y dependencias, configuracion del proyecto.
-* **Etapa3:** Creacion de componentes, servicios y rutas.
-* **Etapa4:** Pruebas Unitarias
-* **Etapa5:** Integracion con el Back-End
-* **Etapa6:** Despliegue del proyecto
+* **1:** Amazon SES
+* **2:** AWS Lambda
+* **3:** Amazon DynamoDB
+* **4:** Amazon Cognito
