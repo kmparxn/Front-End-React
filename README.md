@@ -38,3 +38,4 @@ Redux es un patrón de arquitectura de datos que concede manipular el estado de 
 * **2:** AWS Lambda
 * **3:** Amazon DynamoDB
 * **4:** Amazon Cognito
+* **5:** Amazon S3
