@@ -16,15 +16,14 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TablePagination from '@mui/material/TablePagination';
 import MenuItem from '@mui/material/MenuItem';
 import Popover from '@mui/material/Popover';
-import Iconify from 'src/components/iconify/Iconify';
+import Iconify from '../components/iconify/Iconify';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import DialogUser from 'src/components/dialog/DialogUser';
-import { spacing } from '@mui/system';
-import DialogInventory from 'src/components/dialog/DialogInventory';
-import DialogEmail from 'src/components/dialog/DialogEmail';
-import { DownloadPdf } from 'src/utils/DownloadPdf';
+import DialogUser from '../components/dialog/DialogUser';
+import DialogInventory from '../components/dialog/DialogInventory';
+import DialogEmail from '../components/dialog/DialogEmail';
+import DownloadPdf from '../utils/DownloadPdf';
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {

@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from 'jspdf-autotable'
 
-export function DownloadPdf() {
+export default function DownloadPdf() {
 
     var columns = ["ID", "Name", "Country"];
 var rows = [
