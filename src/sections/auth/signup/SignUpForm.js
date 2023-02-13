@@ -8,7 +8,7 @@ import Iconify from '../../../components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function LoginForm() {
+export default function SignUpForm() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -20,28 +20,16 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
-
-        <TextField
-          name="password"
-          label="Password"
-          type={showPassword ? 'text' : 'password'}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+        <TextField name="userName" label="User Name" />
+        <TextField name="email" type="email" label="Email" />
+        <TextField name="password1" type="password" label="Password" />
+        <TextField name="password2" type="password" label="Confirm Password" />
       </Stack>
 
-      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 1 }}>
         <Checkbox name="remember" label="Remember me" />
-        <Link sx={{ ml: -27 }} variant="subtitle2" underline="hover">
-        Remember me
+        <Link sx={{ ml: -15 }} variant="subtitle2" underline="hover">
+        Agree to Terms and Conditions
         </Link>
         <Link variant="subtitle2" underline="hover">
           Forgot password?
@@ -49,7 +37,7 @@ export default function LoginForm() {
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleClick}>
-        Login
+        Register
       </LoadingButton>
     </>
   );

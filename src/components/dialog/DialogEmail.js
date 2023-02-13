@@ -27,7 +27,7 @@ export default function DialogEmail(props) {
             <StyledTextField label="Email" type="email" variant="filled" required />
             <div>
                 <Button onClick={props.handleDialogEmail} variant="contained" color="error" sx={{margin: "2rem"}} >Cancel</Button>
-                <Button variant="contained" color="primary" type="submit" sx={{margin: "2rem"}}>
+                <Button onClick={props.handleDialog} variant="contained" color="primary" type="submit" sx={{margin: "2rem"}}>
                     Save</Button>
             </div>
         </form>

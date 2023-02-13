@@ -1,6 +1,7 @@
 import { Dialog } from '@mui/material';
 import { Button, TextField, styled } from "@mui/material";
 import React, { useState } from "react";
+import Stack from '@mui/material/Stack';
 
 export default function DialogUser(props) {
 
@@ -31,11 +32,11 @@ export default function DialogUser(props) {
             <StyledTextField label="Telefono" variant="filled" required />
             <StyledTextField label="Pais" variant="filled" required />
 
-            <div>
-                <Button variant="contained" color="error" sx={{margin: "2rem"}} onClick={props.handleDialog}>Cancel</Button>
-                <Button variant="contained" color="primary" type="submit" sx={{margin: "2rem"}}>
+            <Stack direction="row">
+                <Button variant="contained" color="error" sx={{margin: "2rem", mx: 1, px:3}} onClick={props.handleDialog}>Cancel</Button>
+                <Button onClick={props.handleDialog} variant="contained" color="primary" type="submit" sx={{margin: "2rem", px:4}}>
                     Save</Button>
-            </div>
+            </Stack>
         </form>
         </Dialog>
       

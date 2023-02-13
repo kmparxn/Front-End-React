@@ -1,4 +1,4 @@
-import { Dialog } from '@mui/material';
+import { Dialog, Stack } from '@mui/material';
 import { Button, TextField, styled } from "@mui/material";
 import React, { useState } from "react";
 
@@ -29,11 +29,11 @@ export default function DialogInventory(props) {
             <StyledTextField label="Item" variant="filled" required />
             <StyledTextField label="Amount" variant="filled" required />
             <StyledTextField label="Total Price" variant="filled" required />
-            <div>
-                <Button onClick={props.handleDialogIvent} variant="contained" color="error" sx={{margin: "2rem"}} >Cancel</Button>
-                <Button variant="contained" color="primary" type="submit" sx={{margin: "2rem"}}>
+            <Stack direction="row">
+                <Button sx={{margin: "2rem", mx: 1, px:3}} onClick={props.handleDialogIvent} variant="contained" color="error" >Cancel</Button>
+                <Button onClick={props.handleDialog} sx={{margin: "2rem", px:4}} variant="contained" color="primary" type="submit" >
                     Save</Button>
-            </div>
+            </Stack>
         </form>
         </Dialog>
       
