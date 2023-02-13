@@ -3,15 +3,15 @@ import autoTable from 'jspdf-autotable'
 
 export default function DownloadPdf() {
 
-    var columns = ["ID", "Name", "Country"];
-var rows = [
-    [1, "Shaw", "Tanzania"],
-    [2, "Nelson", "Kazakhstan"],
-    [3, "Garcia", "Madagascar"]
-];
+    let columns = ["ID", "Name", "Country"];
+    let rows = [
+        [1, "Shaw", "Tanzania"],
+        [2, "Nelson", "Kazakhstan"],
+        [3, "Garcia", "Madagascar"]
+    ];
 
 // Only pt supported (not mm or in)
-var doc = new jsPDF('p', 'pt');
+let doc = new jsPDF('p', 'pt');
     doc.text("Inventory Detailed Report", 40, 30);
     
     

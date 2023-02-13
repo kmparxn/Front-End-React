@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +18,6 @@ import TablePagination from '@mui/material/TablePagination';
 import MenuItem from '@mui/material/MenuItem';
 import Popover from '@mui/material/Popover';
 import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Iconify from '../components/iconify/Iconify';
 
@@ -79,7 +79,7 @@ function Row(props) {
   };
 
   return (
-    <React.Fragment>
+    <>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
           <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
@@ -181,7 +181,7 @@ function Row(props) {
       </Popover>
       <DialogEmail opente={opente} handleDialogEmail={handleDialogEmail} /> 
 
-    </React.Fragment>
+    </>
   );
 }
 
