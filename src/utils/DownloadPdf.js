@@ -3,22 +3,14 @@ import autoTable from 'jspdf-autotable'
 
 export default function DownloadPdf() {
 
-    let columns = ["ID", "Name", "Country"];
-    let rows = [
-        [1, "Shaw", "Tanzania"],
-        [2, "Nelson", "Kazakhstan"],
-        [3, "Garcia", "Madagascar"]
-    ];
 
 // Only pt supported (not mm or in)
 let doc = new jsPDF('p', 'pt');
     doc.text("Inventory Detailed Report", 40, 30);
+    doc.text("Tech SAS", 40, 50)
     
     
     doc.autoTable({
-        addPageContent: function(data) {
-            doc.text("Tech SAS", 40, 50);
-        },
         margin: {top: 60},
     head: [['Name: Tech SAS', 'Direccion: Calle 123', 'NIT: 1287321', 'Telefono: 356-234-4332', 'Pais: Col'], ['Date', 'Item', 'Amount', 'Price']],
     foot:[[' ', 'Price total', '130000', '  ']],
