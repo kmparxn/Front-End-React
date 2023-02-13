@@ -1,5 +1,5 @@
-import { Dialog } from '@mui/material';
-import { Button, TextField, styled } from "@mui/material";
+import { Button, TextField, styled, Dialog } from "@mui/material";
+
 import React, { useState } from "react";
 
 export default function DialogEmail(props) {

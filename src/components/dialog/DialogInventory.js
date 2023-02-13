@@ -1,5 +1,4 @@
-import { Dialog, Stack } from '@mui/material';
-import { Button, TextField, styled } from "@mui/material";
+import { Button, TextField, styled, Dialog, Stack } from "@mui/material";
 import React, { useState } from "react";
 
 export default function DialogInventory(props) {

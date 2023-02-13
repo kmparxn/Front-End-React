@@ -8,8 +8,7 @@ import useResponsive from '../hooks/useResponsive';
 import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
-import { LoginForm } from '../sections/auth/login';
-import { SignUpForm } from 'src/sections/auth/signup';
+import { SignUpForm } from '../sections/auth/signup';
 
 // ----------------------------------------------------------------------
 

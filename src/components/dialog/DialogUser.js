@@ -1,7 +1,5 @@
-import { Dialog } from '@mui/material';
-import { Button, TextField, styled } from "@mui/material";
+import { Button, TextField, styled, Dialog, Stack } from "@mui/material";
 import React, { useState } from "react";
-import Stack from '@mui/material/Stack';
 
 export default function DialogUser(props) {
 
