@@ -1,11 +1,11 @@
-import { jsPDF } from "jspdf";
+import JsPDF  from "jspdf";
 import autoTable from 'jspdf-autotable'
 
 export default function DownloadPdf() {
 
 
 // Only pt supported (not mm or in)
-let doc = new jsPDF('p', 'pt');
+const doc = new JsPDF('p', 'pt');
     doc.text("Inventory Detailed Report", 40, 30);
     doc.text("Tech SAS", 40, 50)
     
