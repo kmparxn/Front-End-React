@@ -1,40 +1,41 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+# [Node.js - Front-End - AWS](https://demo-react2.vercel.app/dashboard/user) &middot;  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) 
+### Prueba Técnica Revstar Colombia [(Demo)](https://demo-react2.vercel.app/dashboard/user)
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+## Stack Tecnologico
 
-> Free React Admin Dashboard made with Material-UI components and React.
+Principales tecnologias para el proyecto CompanyTory:
 
-![preview](public/assets/preview.jpg)
+* **React:** 
+* **Material-UI** 
+* **RTK Query**
+* **Redux Toolkit**
+* **Styled-Components**
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **6** Demo pages                                      | **50+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ Next.js version                                                 |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+# Demo
 
-## Page demo
+![Captura de pantalla (989)](https://user-images.githubusercontent.com/42001590/218299563-4523a72f-f7f4-4b5e-a609-778eb67baad8.png)
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
 
-## Getting started
+## Arquitectura
 
-- Recommended `node js 16.x` and `npm 6+`. (suggestion v16.15.0)
-- Install dependencies: `npm install` / `yarn install`
-- Start the project: `npm run start` / `yarn start`
+### Diagrama de arquitectura de la solución (Basada en Amazon Web Services). 
 
-## License
+![architecture](https://user-images.githubusercontent.com/42001590/218430331-786b8be2-c6b3-4ea3-9ad5-7fef812de730.png)
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+# Diagrama de Entidad-Relación
 
-## Contact us
+![Diagrama ER de base de datos (pata de gallo)(1)](https://user-images.githubusercontent.com/42001590/218332414-34d6faa8-c32b-4d2c-b43d-8ee6eb9e0ed4.png)
 
-Email Us: support@minimals.cc
+## Patrón de arquitectura de datos 
+
+### Redux 
+
+Redux es un patrón de arquitectura de datos que concede manipular el estado de la aplicación de una forma predecible. Está creado para disminuir el número de relaciones entre los componentes de la aplicación y conservar un flujo de datos asequible.
+
+## Amazon Web Services
+
+* **1:** Amazon SES
+* **2:** AWS Lambda
+* **3:** Amazon RDS
+* **4:** Amazon Cognito
+* **5:** Amazon S3
