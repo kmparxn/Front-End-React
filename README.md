@@ -7,7 +7,6 @@ Main technologies for the CompanyTory project.
 
 * **React:** 
 * **Material-UI** 
-* **RTK Query**
 * **Redux Toolkit**
 * **Styled-Components**
 
