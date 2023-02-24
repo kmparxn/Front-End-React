@@ -1,5 +1,4 @@
 # [Node.js - Front-End - AWS](https://demo-react2.vercel.app/dashboard/user) &middot;  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) 
-### Prueba Técnica Revstar Colombia [(Demo)](https://demo-react2.vercel.app/dashboard/user)
 
 ## Tech Stack
 
